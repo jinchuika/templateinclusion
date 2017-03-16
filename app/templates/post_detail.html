@@ -14,10 +14,7 @@
 
     <h3>Comentarios</h3>
     {% for comentario in post.comentarios.all %}
-        <h4>{{ comentario.usuario }}</h4>
-        {{ comentario.mensaje|linebreaks }}
-        <h6>Enviado el {{ comentario.fecha }}</h6>
-        <hr>
+        {% include "coment_template.html" with comentario=comentario %}
     {% endfor %}
 </body>
 </html>
