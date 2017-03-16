@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.titulo }}</title>
+</head>
+<body>
+    <article>
+        <h1>{{ post.titulo }}</h1>
+
+    </article>
+    <h1>{{ post.titulo }}</h1>
+
+    {{ post.cuerpo|linebreaks }}
+
+    <h3>Comentarios</h3>
+    {% for comentario in post.comentarios.all %}
+        <h4>{{ comentario.usuario }}</h4>
+        {{ comentario.mensaje|linebreaks }}
+        <h6>Enviado el {{ comentario.fecha }}</h6>
+        <hr>
+    {% endfor %}
+</body>
+</html>
