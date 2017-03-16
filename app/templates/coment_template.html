@@ -1,4 +1,12 @@
 <h4>{{ comentario.usuario }}</h4>
 {{ comentario.mensaje|linebreaks }}
 <h6>Enviado el {{ comentario.fecha }}</h6>
-<hr>
+{% if comentario.hijos.count > 0 %}
+	<ul>
+		{% for hijo in comentario.hijos.all %}
+			<li>
+				{% include "coment_template.html" with comentario=hijo %}
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}

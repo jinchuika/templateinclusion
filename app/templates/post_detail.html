@@ -7,14 +7,18 @@
     <article>
         <h1>{{ post.titulo }}</h1>
 
+        {{ post.cuerpo|linebreaks }}
+
+        <h3>Comentarios</h3>
+        <ul>
+            {% for comentario in post.comentarios.all %}
+                {% if not comentario.padre %}
+                    <li>
+                        {% include "coment_template.html" with comentario=comentario %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </article>
-    <h1>{{ post.titulo }}</h1>
-
-    {{ post.cuerpo|linebreaks }}
-
-    <h3>Comentarios</h3>
-    {% for comentario in post.comentarios.all %}
-        {% include "coment_template.html" with comentario=comentario %}
-    {% endfor %}
 </body>
 </html>
